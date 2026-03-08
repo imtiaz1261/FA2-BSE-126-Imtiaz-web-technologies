@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign-Up Form (Interface Only)</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 40px 20px;
+      color: #222;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 25px 0;
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      color: #1e3c72;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      color: #555;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+      outline: none;
+    }
+
+    /* Groups */
+    .radio-group,
+    .checkbox-group {
+      margin-bottom: 20px;
+      padding-left: 10px;
+    }
+
+    .radio-option,
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      justify-content: flex-start;
+    }
+
+    /* Make input boxes larger for visibility */
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #1e3c72;
+      cursor: pointer;
+    }
+
+    .radio-option label,
+    .checkbox-option label {
+      margin-left: 8px;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .btn {
+      background-color: #2a5298;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #1e3c72;
+    }
+
+    .note {
+      text-align: center;
+      color: #777;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Sign-Up Form</h1>
+    </header>
+
+    <form>
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" placeholder="Enter your name">
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="name@example.com">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" placeholder="Re-type password">
+
+      <label for="birthDate">Date of Birth</label>
+      <input type="date" id="birthDate">
+
+      <label for="country">Country</label>
+      <select id="country">
+        <option>Select Country</option>
+        <option>Pakistan</option>
+        <option>USA</option>
+        <option>UK</option>
+        <option>Canada</option>
+      </select>
+
+      <label>Gender</label>
+      <div class="radio-group">
+        <div class="radio-option">
+          <input type="radio" name="gender" id="male">
+          <label for="male">Male</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="gender" id="female">
+          <label for="female">Female</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" name="gender" id="other">
+          <label for="other">Other</label>
+        </div>
+      </div>
+
+      <label>Interests</label>
+      <div class="checkbox-group">
+        <div class="checkbox-option">
+          <input type="checkbox" id="webDev">
+          <label for="webDev">Web Development</label>
+        </div>
+        <div class="checkbox-option">
+          <input type="checkbox" id="mobileDev">
+          <label for="mobileDev">Mobile Development</label>
+        </div>
+        <div class="checkbox-option">
+          <input type="checkbox" id="dataScience">
+          <label for="dataScience">Data Science</label>
+        </div>
+        <div class="checkbox-option">
+          <input type="checkbox" id="ai">
+          <label for="ai">Artificial Intelligence</label>
+        </div>
+      </div>
+
+      <div class="checkbox-option">
+        <input type="checkbox" id="terms">
+        <label for="terms">I agree to the Terms and Conditions</label>
+      </div>
+
+      <button type="button" class="btn">Sign Up</button>
+    </form>
+
+    <p class="note">This is a static form created using only HTML and CSS (no backend or JS).</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 1 - Web Platforms</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== Header Section ===== */
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* ===== Container and Slides ===== */
+    .container {
+      width: 90%;
+      margin: 30px auto;
+    }
+
+    .slide {
+      background: white;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 10px;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 25px;
+    }
+
+    .slide1 { background-color: #eaf2ff; }
+    .slide2 { background-color: #e8f5e9; }
+    .slide3 { background-color: #fff8e1; }
+
+    p {
+      color: #333;
+    }
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    /* cover button */
+    .cover-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cover-btn:disabled {
+      background: #6c757d;
+      cursor: default;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <h1>CSC336 - Web Technologies</h1>
+    <p><strong>Lecture 1:</strong> Web Platforms</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 4 -->
+    <div class="slide slide1">
+      <h2>Introduction to Web Platforms</h2>
+      <p>Web platforms provide a foundation for developing, deploying, and managing web-based applications and services.</p>
+      <ul>
+        <li>Enable communication between users and servers.</li>
+        <li>Support multiple technologies like HTML, CSS, and JavaScript.</li>
+        <li>Provide tools and frameworks for modern web app development.</li>
+      </ul>
+      <p><b>Example HTML page:</b></p>
+      <code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;My Web Platform&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to a Web Platform&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+      </code>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide slide2">
+      <h2>Key Components</h2>
+      <p>Every web platform includes several essential components:</p>
+      <ul>
+        <li><b>Web Browser:</b> Renders web pages and executes client-side scripts.</li>
+        <li><b>Web Server:</b> Hosts and delivers web content to users.</li>
+        <li><b>Database:</b> Stores and manages data efficiently.</li>
+        <li><b>Programming Languages:</b> Used to build the frontend and backend logic.</li>
+      </ul>
+      <p><b>Basic structure example:</b></p>
+      <code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;App&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+      </code>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide slide3">
+      <h2>Examples of Web Platforms</h2>
+      <ul>
+        <li>WordPress</li>
+        <li>Google App Engine</li>
+        <li>Microsoft Azure</li>
+        <li>Amazon Web Services (AWS)</li>
+        <li>GitHub Pages</li>
+      </ul>
+      <p>These platforms simplify web development by providing hosting, scaling, and management tools for applications.</p>
+      <p><b>Quick link example:</b></p>
+      <code>
+&lt;a href="https://aws.amazon.com"&gt;Visit AWS&lt;/a&gt;
+      </code>
+    </div>
+
+    <!-- Navigation controls -->
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <div class="nav-buttons">
+      <a href="index.html">🏠 Home</a>
+      <a href="lecture2.html">Next Lecture ➡</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 1;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  </div>
+
+  <footer>
+    CSC336 — Web Technologies | Lecture 1 © 2025
+  </footer>
+
+</body>
+</html>

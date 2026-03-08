@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 4 - Tables, Div, Span, and Layout Design</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .slide {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 10px;
+      font-size: 1.5rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 25px;
+      line-height: 1.8;
+    }
+
+    li {
+      color: #333;
+    }
+
+    .slide1 { background-color: #e3f2fd; } /* light blue */
+    .slide2 { background-color: #e8f5e9; } /* light green */
+    .slide3 { background-color: #fff8e1; } /* light yellow */
+
+    p {
+      color: #444;
+      margin-top: 10px;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      display: block;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* cover button */
+    .cover-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cover-btn:disabled {
+      background: #6c757d;
+      cursor: default;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lecture 4: Tables, Div, Span, and Layout Design</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 3 -->
+    <div class="slide slide1">
+      <h2>Introduction to HTML Layout</h2>
+      <p><b>HTML</b> provides basic elements for structuring web content. The focus of this lecture is on <b>tables</b>, <b>div</b>, and <b>span</b> elements for layout design.</p>
+      <ul>
+        <li>These elements help organize content within a webpage.</li>
+        <li><b>&lt;table&gt;</b> organizes data into rows and columns.</li>
+        <li><b>&lt;div&gt;</b> groups content for structure and styling.</li>
+        <li><b>&lt;span&gt;</b> styles inline portions of text.</li>
+      </ul>
+      <p><b>Example of div &amp; span:</b></p>
+      <code>
+&lt;div&gt;
+  This is a block of text.
+  &lt;span style="color:red;"&gt;Important&lt;/span&gt;
+&lt;/div&gt;
+      </code>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide slide2">
+      <h2>What Are HTML Tables?</h2>
+      <p><b>HTML tables</b> are used to present data in a tabular format consisting of rows and columns.</p>
+      <ul>
+        <li>Commonly used for structuring and displaying data.</li>
+        <li>Each table consists of <b>&lt;tr&gt;</b> (table row), <b>&lt;th&gt;</b> (header), and <b>&lt;td&gt;</b> (data cell) elements.</li>
+        <li>In the past, tables were used for page layout — but this practice is now <b>deprecated</b>.</li>
+      </ul>
+      <p><b>Example:</b></p>
+      <code>
+&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Header 1&lt;/th&gt;
+    &lt;th&gt;Header 2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Data 1&lt;/td&gt;
+    &lt;td&gt;Data 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+      </code>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide slide3">
+      <h2>Basic Table Structure</h2>
+      <p>A simple HTML table includes <b>table</b>, <b>row</b>, and <b>cell</b> elements. It organizes data into readable sections.</p>
+      <ul>
+        <li><b>&lt;table&gt;</b> : Defines the table.</li>
+        <li><b>&lt;tr&gt;</b> : Defines a row.</li>
+        <li><b>&lt;th&gt;</b> : Table header (bold and centered by default).</li>
+        <li><b>&lt;td&gt;</b> : Table data (cell).</li>
+      </ul>
+      <p><b>Example:</b></p>
+      <code>
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Header 1&lt;/th&gt;
+      &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Data 1&lt;/td&gt;
+      &lt;td&gt;Data 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+      </code>
+      <p>This is an example of a simple table with headers and data rows.</p>
+    </div>
+
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <!-- Navigation controls -->
+    <div class="nav-buttons">
+      <a href="lecture3.html">⬅ Previous Lecture</a>
+      <a href="lecture5.html">Next Lecture ➡</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 4;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  </div>
+
+  <footer>
+    CSC336 — Web Technologies | Lecture 4 © 2026
+  </footer>
+
+</body>
+</html>

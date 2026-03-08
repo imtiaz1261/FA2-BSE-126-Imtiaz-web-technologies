@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 7 - CSS</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .slide {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 10px;
+      font-size: 1.5rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 25px;
+      line-height: 1.8;
+    }
+
+    li {
+      color: #333;
+    }
+
+    p {
+      color: #444;
+      margin-top: 10px;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      display: block;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+
+    .slide1 { background-color: #e3f2fd; } /* light blue */
+    .slide2 { background-color: #e8f5e9; } /* light green */
+    .slide3 { background-color: #fff8e1; } /* light yellow */
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* cover button */
+    .cover-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cover-btn:disabled {
+      background: #6c757d;
+      cursor: default;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lecture 7: CSS</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 3 -->
+    <div class="slide slide1">
+      <h2>CSS Introduction</h2>
+      <p><b>CSS (Cascading Style Sheets)</b> is the language used to style and layout web pages.</p>
+      <ul>
+        <li>CSS describes how HTML elements are displayed on screen, paper, or other media.</li>
+        <li>It helps in separating content from design.</li>
+        <li>CSS saves time — one stylesheet can control multiple web pages.</li>
+        <li>External stylesheets are stored in <b>.css</b> files.</li>
+      </ul>
+      <h3>CSS Syntax</h3>
+      <p>A CSS rule consists of a <b>selector</b> and a <b>declaration block</b>:</p>
+      <code>
+selector {
+  property: value;
+}
+      </code>
+      <p><b>Example:</b></p>
+      <code>
+h1 {
+  color: red;
+  text-align: right;
+}
+p {
+  font-family: Arial;
+  font-size: 20px;
+}
+      </code>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide slide2">
+      <h2>Common CSS Properties</h2>
+      <ul>
+        <li><b>color</b> – sets the text color</li>
+        <li><b>text-align</b> – aligns the text (left, right, center)</li>
+        <li><b>font-family</b>, <b>font-size</b>, <b>font-weight</b> – control font style and appearance</li>
+        <li><b>width</b>, <b>height</b> – define element dimensions</li>
+        <li><b>margin</b>, <b>padding</b> – create space around and inside elements</li>
+        <li><b>border</b> – defines the border around elements</li>
+      </ul>
+      <p><b>Example:</b></p>
+      <code>
+div {
+  color: blue;
+  width: 200px;
+  height: 200px;
+  border: 3px dashed black;
+  margin: 20px;
+  padding: 20px;
+}
+      </code>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide slide3">
+      <h2>How to Add CSS</h2>
+      <p>There are <b>three ways</b> to insert CSS into an HTML document:</p>
+      <ul>
+        <li><b>External CSS</b> – use a separate .css file linked with the HTML file.</li>
+        <li><b>Internal CSS</b> – include CSS inside a &lt;style&gt; tag in the HTML &lt;head&gt;.</li>
+        <li><b>Inline CSS</b> – write CSS directly inside an element’s style attribute.</li>
+      </ul>
+
+      <h3>Example: Inline CSS</h3>
+      <code>
+&lt;h1 style="color: blue; text-align: center;"&gt;Hello&lt;/h1&gt;
+&lt;body style="color: blue; text-align: center;"&gt;
+      </code>
+
+      <h3>Example: External CSS</h3>
+      <code>
+h1 {
+  color: blue;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+}
+      </code>
+    </div>
+
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <!-- Navigation controls -->
+    <div class="nav-buttons">
+      <a href="lecture6.html">⬅ Previous Lecture</a>
+      <a href="lecture8.html">Next Lecture ➡</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 7;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  </div>
+
+  <footer>
+    CSC336 — Web Technologies | Lecture 7 © 2026
+  </footer>
+
+</body>
+</html>

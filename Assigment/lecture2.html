@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 2 - Introduction to Web Applications</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== Header Section ===== */
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* ===== Main Container ===== */
+    .container {
+      width: 85%;
+      margin: 30px auto;
+    }
+
+    .slide {
+      background-color: white;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 15px;
+      margin-bottom: 15px;
+    }
+
+    p, li {
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .highlight {
+      color: #2a5298;
+      font-weight: bold;
+    }
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>CSC336 - Web Technologies</h1>
+    <p><strong>Lecture 2:</strong> Introduction to Web Applications</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <h2>Introduction</h2>
+      <p>The World Wide Web (WWW) has evolved from simple static pages to complex web-based applications that allow real-time interaction, collaboration, and communication.</p>
+      <ul>
+        <li>Early web pages were static and content-driven.</li>
+        <li>Modern websites are dynamic and interactive.</li>
+        <li>Web technologies have enabled global communication, business, and learning.</li>
+      </ul>
+      <p><b>Static page example:</b></p>
+      <code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+      </code>
+      <p><b>Dynamic example (JS):</b></p>
+      <code>
+&lt;script&gt;
+document.write('Time: ' + new Date());
+&lt;/script&gt;
+      </code>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <h2>Categories of Web Applications</h2>
+      <ul>
+        <li><span class="highlight">Static Web Applications:</span> Simple content-based websites with fixed information (e.g., portfolios, company pages).</li>
+        <li><span class="highlight">Dynamic Web Applications:</span> Data-driven sites that change based on user interaction (e.g., social media, e-commerce).</li>
+        <li><span class="highlight">E-commerce Applications:</span> Allow users to buy and sell goods online (e.g., Amazon, Daraz).</li>
+        <li><span class="highlight">Portal Web Applications:</span> Provide multiple services from a single interface (e.g., Yahoo, MSN).</li>
+        <li><span class="highlight">Content Management Systems (CMS):</span> Enable non-technical users to manage content (e.g., WordPress).</li>
+      </ul>
+      <p><b>Example form snippet:</b></p>
+      <code>
+&lt;form&gt;
+  &lt;input type="text" name="name" placeholder="Your Name"&gt;
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+      </code>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <h2>Document-Centric Web Applications</h2>
+      <p>Document-centric applications focus on creating, managing, and sharing documents through a web interface.</p>
+      <ul>
+        <li>Examples include <b>Google Docs</b>, <b>Office 365</b>, and <b>Dropbox Paper</b>.</li>
+        <li>Users can create, edit, and collaborate in real-time.</li>
+        <li>They often support cloud storage and version control.</li>
+      </ul>
+      <p><b>Key Benefit:</b> Access your documents from anywhere using an internet connection.</p>
+    </div>
+
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <!-- Navigation controls -->
+    <div class="nav-buttons">
+      <a href="lecture1.html">⬅ Previous Lecture</a>
+      <a href="lecture3.html">Next Lecture ➡</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 2;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  <div class="footer">
+    CSC336 — Web Technologies | Lecture 2 © 2026
+  </div>
+</body>
+</html>

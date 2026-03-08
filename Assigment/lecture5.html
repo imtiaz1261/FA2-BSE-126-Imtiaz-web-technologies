@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 5 - Introduction to HTML5</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .slide {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 10px;
+      font-size: 1.5rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 25px;
+      line-height: 1.8;
+    }
+
+    li {
+      color: #333;
+    }
+
+    .slide1 { background-color: #e3f2fd; } /* light blue */
+    .slide2 { background-color: #e8f5e9; } /* light green */
+    .slide3 { background-color: #fff8e1; } /* light yellow */
+
+    p {
+      color: #444;
+      margin-top: 10px;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      display: block;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* cover button */
+    .cover-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cover-btn:disabled {
+      background: #6c757d;
+      cursor: default;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lecture 5: Introduction to HTML5</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 3 -->
+    <div class="slide slide1">
+      <h2>What is HTML5?</h2>
+      <p><b>HTML5</b> is the latest version of the <b>HTML standard</b>. It introduces new elements, attributes, and behaviors that enhance modern web development.</p>
+      <ul>
+        <li>Focuses on better <b>semantics</b>, <b>multimedia support</b>, and <b>device independence</b>.</li>
+        <li>Provides structure and features for responsive and interactive web applications.</li>
+      </ul>
+      <p><b>Doctype Declaration:</b></p>
+      <code>&lt;!DOCTYPE html&gt;</code>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide slide2">
+      <h2>Key Features of HTML5</h2>
+      <ul>
+        <li><b>Responsive Design:</b> Websites automatically adjust layout and content based on screen size.</li>
+        <li><b>Viewport Meta Tag:</b> Ensures proper scaling across different devices.</li>
+        <li><b>Flexible Multimedia:</b> Supports native <b>&lt;audio&gt;</b> and <b>&lt;video&gt;</b> without third-party plugins like Flash.</li>
+        <li><b>Cross-Platform Compatibility:</b> Includes the <b>&lt;canvas&gt;</b> element for graphics and interactive content across devices.</li>
+        <li><b>Forms and Input Types:</b> Adds new types like <b>email</b>, <b>tel</b>, and <b>date</b> for better device adaptation.</li>
+        <li><b>Offline Support:</b> Technologies such as <b>localStorage</b> and <b>service workers</b> enable offline functionality.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide slide3">
+      <h2>HTML5 vs Previous Versions</h2>
+      <p><b>HTML4:</b> Focused on formatting using elements like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>.</p>
+      <p><b>HTML5:</b> Introduced semantic tags to improve readability, accessibility, and structure.</p>
+
+      <h3>The Importance of Semantic HTML</h3>
+      <ul>
+        <li>Improves accessibility, SEO, and maintainability.</li>
+        <li>Helps browsers and search engines understand webpage content.</li>
+      </ul>
+
+      <h3>Examples of Semantic Elements</h3>
+      <ul>
+        <li><b>&lt;header&gt;</b>, <b>&lt;footer&gt;</b>, <b>&lt;article&gt;</b>, <b>&lt;section&gt;</b>, <b>&lt;nav&gt;</b>, <b>&lt;aside&gt;</b></li>
+      </ul>
+
+      <p><b>Example:</b></p>
+      <code>
+&lt;article&gt;
+  &lt;h2&gt;Latest News&lt;/h2&gt;
+  &lt;p&gt;This is a news article.&lt;/p&gt;
+&lt;/article&gt;
+      </code>
+    </div>
+
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <!-- Navigation controls -->
+    <div class="nav-buttons">
+      <a href="lecture4.html">⬅ Previous Lecture</a>
+      <a href="lecture6.html">Next Lecture ➡</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 5;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  </div>
+
+  <footer>
+    CSC336 — Web Technologies | Lecture 5 © 2026
+  </footer>
+
+</body>
+</html>

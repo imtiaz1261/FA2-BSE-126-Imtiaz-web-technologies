@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 3 - Introduction to HTML</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .slide {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 10px;
+      font-size: 1.5rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 25px;
+      line-height: 1.8;
+    }
+
+    li {
+      color: #333;
+    }
+
+    .slide1 { background-color: #e3f2fd; } /* light blue */
+    .slide2 { background-color: #e8f5e9; } /* light green */
+    .slide3 { background-color: #fff8e1; } /* light yellow */
+
+    p {
+      color: #444;
+      margin-top: 10px;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* cover button */
+    .cover-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cover-btn:disabled {
+      background: #6c757d;
+      cursor: default;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lecture 3: Introduction to HTML</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 4 -->
+    <div class="slide slide1">
+      <h2>What is HTML?</h2>
+      <p><b>HTML</b> stands for <b>HyperText Markup Language</b>. It is the standard language used to create and design web pages.</p>
+      <ul>
+        <li>Defines the structure of a webpage using tags and elements.</li>
+        <li>Forms the foundation of all web content.</li>
+        <li>Works together with <b>CSS</b> (for styling) and <b>JavaScript</b> (for interactivity).</li>
+      </ul>
+      <p><b>Example:</b></p>
+      <code>&lt;h1&gt;Hello, World!&lt;/h1&gt;</code>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide slide2">
+      <h2>History of HTML</h2>
+      <p>HTML was developed by <b>Tim Berners-Lee</b> in 1991 as a simple way to share and format documents on the World Wide Web.</p>
+      <ul>
+        <li><b>1991:</b> HTML 1.0 introduced basic tags for documents.</li>
+        <li><b>1995:</b> HTML 2.0 standardized, improving browser compatibility.</li>
+        <li><b>1997–1999:</b> HTML 3.2 and 4.0 added support for multimedia, scripting, and styling.</li>
+        <li><b>2014:</b> HTML5 released with powerful features for modern web applications.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide slide3">
+      <h2>Evolution of HTML</h2>
+      <p>Over the years, HTML has evolved to support dynamic, responsive, and media-rich experiences on the web.</p>
+      <ul>
+        <li><b>HTML 1.0:</b> Basic structure and hyperlinks.</li>
+        <li><b>HTML 2.0–4.0:</b> Introduced forms, tables, and style integration.</li>
+        <li><b>XHTML:</b> Brought XML-based syntax for stricter coding standards.</li>
+        <li><b>HTML 5:</b> Added semantic elements, audio/video tags, and APIs for offline and interactive features.</li>
+      </ul>
+      <p>Today, HTML5 forms the backbone of nearly every website and web application worldwide.</p>
+    </div>
+
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <!-- Navigation controls -->
+    <div class="nav-buttons">
+      <a href="lecture2.html">⬅ Previous Lecture</a>
+      <a href="lecture4.html">Next Lecture ➡</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 3;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  </div>
+
+  <footer>
+    CSC336 — Web Technologies | Lecture 3 © 2026
+  </footer>
+
+</body>
+</html>

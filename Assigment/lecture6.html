@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 6 - HTML Forms</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .slide {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 10px;
+      font-size: 1.5rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 25px;
+      line-height: 1.8;
+    }
+
+    li {
+      color: #333;
+    }
+
+    .slide1 { background-color: #e3f2fd; } /* light blue */
+    .slide2 { background-color: #e8f5e9; } /* light green */
+    .slide3 { background-color: #fff8e1; } /* light yellow */
+
+    p {
+      color: #444;
+      margin-top: 10px;
+    }
+
+    code {
+      background-color: #eee;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      display: block;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* cover button */
+    .cover-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cover-btn:disabled {
+      background: #6c757d;
+      cursor: default;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lecture 6: HTML Forms</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 3 -->
+    <div class="slide slide1">
+      <h2>Introduction to HTML Forms</h2>
+      <p><b>HTML Forms</b> provide a way to collect user input in web applications. Forms are a core part of interactive websites such as login pages, registration forms, and feedback systems.</p>
+      <ul>
+        <li>Used for <b>data submission</b> from the user to the server.</li>
+        <li>Help gather information such as text, emails, passwords, or selections.</li>
+        <li>Communicate with web servers to process or store the submitted data.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide slide2">
+      <h2>The <form> Element</h2>
+      <p>The <b>&lt;form&gt;</b> tag defines a container for collecting user input. It can include multiple elements such as text fields, buttons, and dropdowns.</p>
+      <p><b>Example:</b></p>
+      <code>
+&lt;form action="/submit" method="post"&gt;
+  &lt;!-- Form content here --&gt;
+&lt;/form&gt;
+      </code>
+      <p>Common form elements include:</p>
+      <ul>
+        <li><b>&lt;label&gt;</b> – Describes an input field.</li>
+        <li><b>&lt;input&gt;</b> – Collects user data.</li>
+        <li><b>&lt;select&gt;</b> and <b>&lt;option&gt;</b> – Create dropdown lists.</li>
+        <li><b>&lt;textarea&gt;</b> – For multi-line text input.</li>
+        <li><b>&lt;button&gt;</b> – For submitting or resetting the form.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide slide3">
+      <h2>Form Attributes</h2>
+      <ul>
+        <li><b>action:</b> Specifies the URL where the form data will be sent.</li>
+        <li><b>method:</b> Defines how the data is sent (GET or POST).</li>
+      </ul>
+
+      <h3>GET vs POST</h3>
+      <ul>
+        <li><b>GET:</b> Sends data through the URL (used for simple queries).</li>
+        <li><b>POST:</b> Sends data in the request body (used for secure or large data).</li>
+      </ul>
+
+      <p><b>Example:</b></p>
+      <code>
+&lt;form action="/submit" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+      </code>
+      <p>Other important form attributes include <b>name</b>, <b>value</b>, <b>placeholder</b>, and <b>required</b>.</p>
+    </div>
+
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <!-- Navigation controls -->
+    <div class="nav-buttons">
+      <a href="lecture5.html">⬅ Previous Lecture</a>
+      <a href="lecture7.html">Next Lecture ➡</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 6;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  </div>
+
+  <footer>
+    CSC336 — Web Technologies | Lecture 6 © 2026
+  </footer>
+
+</body>
+</html>

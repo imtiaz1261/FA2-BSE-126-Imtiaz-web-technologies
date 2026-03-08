@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 8 - CSS Selectors</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .slide {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .slide:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #1a2980;
+      border-left: 5px solid #26d0ce;
+      padding-left: 10px;
+      font-size: 1.5rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-left: 25px;
+      line-height: 1.8;
+    }
+
+    li {
+      color: #333;
+    }
+
+    p {
+      color: #444;
+      margin-top: 10px;
+    }
+
+    pre {
+      background-color: #eee;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+      white-space: pre;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+
+    .slide1 { background-color: #e3f2fd; } /* light blue */
+    .slide2 { background-color: #e8f5e9; } /* light green */
+    .slide3 { background-color: #fff8e1; } /* light yellow */
+
+    /* ===== Navigation Buttons ===== */
+    .nav-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .nav-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: linear-gradient(135deg, #26d0ce, #1a2980);
+    }
+
+    /* cover button */
+    .cover-btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cover-btn:disabled {
+      background: #6c757d;
+      cursor: default;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Lecture 8: CSS Selectors</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- Slide 2 -->
+    <div class="slide slide1">
+      <h2>Descendant and Child Selectors</h2>
+      <p>
+        <b>Descendant selectors</b> target all nested elements inside a parent (child + grandchild).  
+        <b>Child selectors</b> only target the direct children of an element.
+      </p>
+
+      <h3>Example HTML:</h3>
+      <pre>
+<ol>
+  <li>List item one.</li>
+  <li>List item two.</li>
+  <ul>
+    <li>Sublist item a.</li>
+    <li>Sublist item b.</li>
+  </ul>
+  <li>List item three.</li>
+</ol>
+      </pre>
+
+      <h3>Example CSS:</h3>
+      <pre>
+ol > li {
+  color: blue; /* child selector */
+}
+
+ol li {
+  color: blue; /* descendant selector */
+}
+
+li {
+  color: blue;
+}
+      </pre>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide slide2">
+      <h2>Attribute Selectors</h2>
+      <p><b>Attribute selectors</b> style elements based on the presence or value of attributes.</p>
+
+      <h3>Example HTML:</h3>
+      <pre>
+<ul>
+  <li><a href="https://google.com">Google</a></li>
+  <li><a href="https://facebook.com">Facebook</a></li>
+  <li><a href="https://amazon.com">Amazon</a></li>
+</ul>
+      </pre>
+
+      <h3>Example CSS:</h3>
+      <pre>
+a {
+  color: green;
+}
+
+a[href="https://facebook.com"] {
+  color: blue;
+}
+      </pre>
+
+      <p>
+        In this example, all links are green, but the one pointing to Facebook becomes blue.
+      </p>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide slide3">
+      <h2>Pseudo-Class Selectors</h2>
+      <p>
+        <b>Pseudo-classes</b> define a special state of an element — for example, when a user hovers or focuses on it.
+      </p>
+
+      <h3>Example HTML:</h3>
+      <pre>
+<button>Click Me!</button>
+      </pre>
+
+      <h3>Example CSS:</h3>
+      <pre>
+button {
+  background-color: green;
+  font-size: 24px;
+  width: 200px;
+  height: 50px;
+}
+
+button:hover {
+  background-color: orange;
+}
+      </pre>
+
+      <p>
+        Here, the button changes its color to orange when the user hovers over it.
+      </p>
+    </div>
+
+    <button id="coverBtn" class="cover-btn">Mark Lecture as Covered</button>
+    <!-- Navigation controls -->
+    <div class="nav-buttons">
+      <a href="lecture7.html">⬅ Previous Lecture</a>
+      <a href="index.html">🏠 Home</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const lectureNumber = 8;
+      const btn = document.getElementById('coverBtn');
+      if (localStorage.getItem('lecture' + lectureNumber) === 'covered') {
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      }
+      btn.addEventListener('click', function() {
+        localStorage.setItem('lecture' + lectureNumber, 'covered');
+        btn.textContent = 'Lecture Covered';
+        btn.disabled = true;
+      });
+    });
+  </script>
+
+  </div>
+
+  <footer>
+    CSC336 — Web Technologies | Lecture 8 © 2026 
+  </footer>
+
+</body>
+</html>
