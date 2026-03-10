@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inter CV Generator</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#eef2f7;
+}
+
+/* CV Preview */
+
+.cv-preview{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+margin-top:20px;
+}
+
+/* Profile picture */
+
+#cvPic{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+box-shadow:0 0 8px rgba(0,0,0,0.2);
+margin-bottom:10px;
+}
+
+/* Skills */
+
+#skillsList span{
+display:inline-block;
+background:#0d6efd;
+color:white;
+padding:4px 10px;
+margin:3px;
+border-radius:15px;
+font-size:13px;
+}
+
+/* TEMPLATE 1 */
+
+.template-1{
+display:grid;
+grid-template-columns:30% 70%;
+gap:25px;
+}
+
+.left-column{
+background:#f4f6fa;
+padding:20px;
+}
+
+.right-column{
+padding:25px;
+}
+
+.template-1 #cvHeader{
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:30px 20px;
+}
+
+.template-1 h5{
+border-bottom:2px solid #0d6efd;
+padding-bottom:5px;
+margin-top:20px;
+}
+
+/* TEMPLATE 2 */
+
+.template-2{
+display:grid;
+grid-template-columns:30% 70%;
+gap:20px;
+background:#f9f9f9;
+}
+
+/* TEMPLATE 3 */
+
+.template-3{
+border-left:7px solid #0d6efd;
+background:#f5f9ff;
+}
+
+/* TEMPLATE 4 */
+
+.template-4{
+background:#f7f7f7;
+border-top:6px solid #343a40;
+}
+
+/* TEMPLATE 5 (ResumeSector Style) */
+
+.template-5{
+display:grid;
+grid-template-columns:35% 65%;
+gap:20px;
+border-left:8px solid #1a73e8;
+}
+
+.template-5 .left-column{
+background:#f0f4ff;
+padding:20px;
+}
+
+.template-5 .right-column{
+padding:25px;
+}
+
+.template-5 h5{
+color:#1a73e8;
+border-bottom:2px solid #1a73e8;
+padding-bottom:5px;
+margin-top:20px;
+}
+
+/* TEMPLATE PREVIEW */
+
+.template-box{
+cursor:pointer;
+border:2px solid #ccc;
+border-radius:10px;
+padding:8px;
+background:white;
+transition:0.3s;
+text-align:center;
+}
+
+.template-box img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:6px;
+}
+
+.template-box:hover{
+transform:scale(1.05);
+box-shadow:0 0 10px rgba(0,0,0,0.15);
+}
+
+.template-box.selected{
+border:3px solid #0d6efd;
+background:#e9f1ff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container my-4">
+
+<h2 class="text-center mb-4">Inter CV Generator</h2>
+
+<div class="row">
+
+<!-- LEFT FORM -->
+
+<div class="col-md-4">
+
+<div class="card p-3">
+
+<h5>Enter Your Information</h5>
+
+<input class="form-control mb-2" id="fullName" placeholder="Full Name">
+<input class="form-control mb-2" id="email" placeholder="Email">
+<input class="form-control mb-2" id="phone" placeholder="Phone">
+
+<h6 class="mt-3">Education</h6>
+
+<input class="form-control mb-2" id="degree" placeholder="Degree">
+<input class="form-control mb-2" id="university" placeholder="University">
+<input class="form-control mb-2" id="passingYear" placeholder="Passing Year">
+<input class="form-control mb-2" id="cgpa" placeholder="CGPA">
+
+<h6 class="mt-3">Experience</h6>
+
+<input class="form-control mb-2" id="jobTitle" placeholder="Job Title">
+<input class="form-control mb-2" id="company" placeholder="Company">
+<input class="form-control mb-2" id="duration" placeholder="Duration">
+
+<h6 class="mt-3">Skills</h6>
+
+<div class="d-flex mb-2">
+
+<select class="form-select me-2" id="skillSelect">
+
+<option selected disabled>Select Skill</option>
+<option>HTML</option>
+<option>CSS</option>
+<option>JavaScript</option>
+<option>Flutter</option>
+<option>Python</option>
+
+</select>
+
+<button class="btn btn-primary" id="addSkillBtn">Add</button>
+
+</div>
+
+<div id="skillsList"></div>
+
+<label class="form-label mt-3">Upload Profile Picture</label>
+<input type="file" class="form-control mb-3" id="profilePic" accept="image/*">
+
+<button class="btn btn-success w-100" id="generateBtn">Generate CV</button>
+
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="col-md-8">
+
+<!-- TEMPLATE SELECTOR -->
+
+<div class="row mb-3">
+
+<div class="col-md-2">
+<div class="template-box selected" data-template="template-1">
+<img src="templates/template1.png">
+<p>Modern</p>
+</div>
+</div>
+
+<div class="col-md-2">
+<div class="template-box" data-template="template-2">
+<img src="templates/template2.png">
+<p>Professional</p>
+</div>
+</div>
+
+<div class="col-md-2">
+<div class="template-box" data-template="template-3">
+<img src="templates/template3.png">
+<p>Creative</p>
+</div>
+</div>
+
+<div class="col-md-2">
+<div class="template-box" data-template="template-4">
+<img src="templates/template4.png">
+<p>Simple</p>
+</div>
+</div>
+
+<div class="col-md-2">
+<div class="template-box" data-template="template-5">
+<img src="templates/pro-cv.png">
+<p>Pro CV</p>
+</div>
+</div>
+
+</div>
+
+<!-- CV PREVIEW -->
+
+<div id="cvPreview" class="cv-preview template-1">
+
+<div class="left-column">
+
+<div id="cvHeader">
+
+<img id="cvPic" src="https://via.placeholder.com/120">
+
+<h3 id="cvName">Your Name</h3>
+
+<p id="cvTitle">Job Title</p>
+
+<p id="cvContact">Email | Phone</p>
+
+</div>
+
+<h5>Skills</h5>
+<p id="cvSkills">Skills</p>
+
+<h5>Location</h5>
+<p>Pakistan</p>
+
+</div>
+
+<div class="right-column">
+
+<h5>Professional Summary</h5>
+<p>Motivated professional with strong technical skills.</p>
+
+<h5>Experience</h5>
+<p id="cvExperience">Job Title – Company</p>
+
+<h5>Education</h5>
+<p id="cvEducation">Degree – University</p>
+
+</div>
+
+</div>
+
+<div class="mt-3">
+<button class="btn btn-primary" id="exportPdf">Export PDF</button>
+<button class="btn btn-secondary" id="exportWord">Export Word</button>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+<script>
+
+let skills=[];
+
+document.getElementById("addSkillBtn").onclick=function(){
+
+let skill=document.getElementById("skillSelect").value;
+
+if(skill && !skills.includes(skill)){
+skills.push(skill);
+displaySkills();
+}
+
+};
+
+function displaySkills(){
+
+let container=document.getElementById("skillsList");
+container.innerHTML="";
+
+skills.forEach(skill=>{
+let span=document.createElement("span");
+span.innerText=skill;
+container.appendChild(span);
+});
+
+document.getElementById("cvSkills").innerText=skills.join(", ");
+
+}
+
+/* TEMPLATE SWITCH */
+
+let templates=document.querySelectorAll(".template-box");
+
+templates.forEach(temp=>{
+
+temp.onclick=function(){
+
+templates.forEach(t=>t.classList.remove("selected"));
+
+this.classList.add("selected");
+
+document.getElementById("cvPreview").className="cv-preview "+this.dataset.template;
+
+};
+
+});
+
+/* GENERATE CV */
+
+document.getElementById("generateBtn").onclick=function(){
+
+document.getElementById("cvName").innerText=document.getElementById("fullName").value;
+
+document.getElementById("cvTitle").innerText=document.getElementById("jobTitle").value;
+
+document.getElementById("cvContact").innerText=
+document.getElementById("email").value+" | "+
+document.getElementById("phone").value;
+
+document.getElementById("cvExperience").innerText=
+document.getElementById("jobTitle").value+" at "+
+document.getElementById("company").value+
+" ("+document.getElementById("duration").value+")";
+
+document.getElementById("cvEducation").innerText=
+document.getElementById("degree").value+" - "+
+document.getElementById("university").value+
+" ("+document.getElementById("passingYear").value+") CGPA: "+
+document.getElementById("cgpa").value;
+
+};
+
+/* PROFILE PIC */
+
+document.getElementById("profilePic").addEventListener("change",function(){
+
+let file=this.files[0];
+
+if(file){
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+document.getElementById("cvPic").src=e.target.result;
+};
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+/* WORD EXPORT */
+
+document.getElementById("exportWord").onclick=function(){
+
+let content=document.getElementById("cvPreview").innerHTML;
+
+let blob=new Blob(['<html><body>'+content+'</body></html>'],{type:"application/msword"});
+
+saveAs(blob,"CV.doc");
+
+};
+
+/* PDF EXPORT */
+
+document.getElementById("exportPdf").onclick=function(){
+
+const { jsPDF } = window.jspdf;
+
+let doc=new jsPDF();
+
+doc.text("Download CV from browser preview",10,10);
+
+doc.save("cv.pdf");
+
+};
+
+</script>
+
+</body>
+</html>
