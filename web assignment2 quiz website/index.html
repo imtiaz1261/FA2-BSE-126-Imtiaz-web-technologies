@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Quiz System</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body { background:#f5f7fb; transition:0.3s; }
+.dark { background:#121212; color:white; }
+
+.card-box {
+    max-width:700px;
+    margin:auto;
+    margin-top:40px;
+    padding:25px;
+    border-radius:15px;
+    background:white;
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+
+.quiz-layout { display:flex; gap:20px; padding:20px; }
+
+.option {
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+.option.selected { border:2px solid green; }
+
+.circle {
+    width:120px;height:120px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:bold;
+}
+
+.q-nav {
+    padding:6px;
+    margin:5px 0;
+    border-radius:6px;
+    background:#eee;
+    cursor:pointer;
+}
+.q-nav.active { background:green;color:white; }
+.q-nav.done { background:#d4edda; }
+
+.timer { color:red;font-weight:bold; }
+
+/* RESULT COLORS */
+.correct {
+    background:#d4edda;
+    color:#155724;
+    padding:10px;
+    border-radius:8px;
+}
+.wrong {
+    background:#f8d7da;
+    color:#721c24;
+    padding:10px;
+    border-radius:8px;
+}
+.unattempted {
+    background:#e2e3e5;
+    padding:10px;
+    border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- STEP 1 -->
+<div class="card-box" id="studentPage">
+<h3>Enter Details</h3>
+<input id="name" class="form-control mb-2" placeholder="Name">
+<input id="reg" class="form-control mb-3" placeholder="Registration No">
+<button class="btn btn-success" id="startBtn">Next</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="card-box" id="selectionPage" style="display:none">
+<h3>Select Quiz</h3>
+
+<label>Subject</label>
+<select id="subject" class="form-control mb-3">
+<option>English</option>
+<option>Math</option>
+<option>Web</option>
+<option>OOP</option>
+</select>
+
+<label>No of MCQs</label>
+<select id="count" class="form-control mb-3">
+<option>5</option>
+<option>10</option>
+<option>15</option>
+</select>
+
+<button class="btn btn-primary" id="quizStartBtn">Start Quiz</button>
+</div>
+
+<!-- QUIZ -->
+<div id="quizPage" style="display:none">
+<div class="text-end p-2">
+<button class="btn btn-warning" id="themeBtn">Toggle Theme</button>
+</div>
+
+<div class="quiz-layout">
+
+<div class="flex-fill bg-white p-3 rounded">
+<h5 id="qNo"></h5>
+<div class="timer" id="timer"></div>
+<h4 id="question"></h4>
+<div id="options"></div>
+
+<button class="btn btn-primary" id="nextBtn">Next</button>
+<button class="btn btn-success" id="submitBtn">Submit</button>
+</div>
+
+<div class="bg-white p-3 rounded text-center">
+<div class="circle mx-auto mb-2" id="circle">
+<span id="percent">0%</span>
+</div>
+<div id="qList"></div>
+</div>
+
+</div>
+</div>
+
+<!-- RESULT -->
+<div class="card-box" id="resultPage" style="display:none"></div>
+
+<script>
+let student={},questions=[],answers=[],current=0,time=30,timer=null;
+
+// DOM
+const studentPage=document.getElementById("studentPage");
+const selectionPage=document.getElementById("selectionPage");
+const quizPage=document.getElementById("quizPage");
+const resultPage=document.getElementById("resultPage");
+
+const nameInput=document.getElementById("name");
+const regInput=document.getElementById("reg");
+
+const qNo=document.getElementById("qNo");
+const questionEl=document.getElementById("question");
+const optionsEl=document.getElementById("options");
+const timerEl=document.getElementById("timer");
+const qList=document.getElementById("qList");
+
+const percentEl=document.getElementById("percent");
+const circle=document.getElementById("circle");
+
+// STEP 1
+document.getElementById("startBtn").onclick=()=>{
+    let name=nameInput.value.trim();
+    let reg=regInput.value.trim();
+
+    if(!name||!reg){
+        alert("Enter details");
+        return;
+    }
+
+    student={name,reg};
+    studentPage.style.display="none";
+    selectionPage.style.display="block";
+};
+
+// QUESTIONS
+function generateQuestions(count){
+    let base=[
+    {q:"JS scope?",o:["var","let","const","all"],a:"let"},
+    {q:"HTML link CSS?",o:["link","style","css","script"],a:"link"},
+    {q:"Array remove?",o:["pop","push","shift","slice"],a:"pop"},
+    {q:"CSS color?",o:["font","color","bg","text"],a:"color"},
+    {q:"ID select?",o:["getElementById","query","id","none"],a:"getElementById"}
+    ];
+
+    let arr=[];
+    for(let i=0;i<count;i++){
+        arr.push(base[i%base.length]);
+    }
+    return arr;
+}
+
+// STEP 2
+document.getElementById("quizStartBtn").onclick=()=>{
+    let count=parseInt(document.getElementById("count").value);
+
+    questions=generateQuestions(count);
+    answers=new Array(count).fill(null);
+
+    selectionPage.style.display="none";
+    quizPage.style.display="block";
+
+    loadQuestion(0);
+};
+
+// LOAD QUESTION
+function loadQuestion(i){
+    current=i;
+
+    qNo.innerText=`Q ${i+1}/${questions.length}`;
+    questionEl.innerText=questions[i].q;
+
+    optionsEl.innerHTML="";
+
+    questions[i].o.forEach(opt=>{
+        let div=document.createElement("div");
+        div.className="option";
+        div.innerText=opt;
+
+        if(answers[i]===opt) div.classList.add("selected");
+
+        div.onclick=()=>{
+            document.querySelectorAll(".option").forEach(o=>o.classList.remove("selected"));
+            div.classList.add("selected");
+            answers[i]=opt;
+            updateProgress();
+            updateNav();
+        };
+
+        optionsEl.appendChild(div);
+    });
+
+    updateNav();
+    startTimer();
+}
+
+// TIMER
+function startTimer(){
+    clearInterval(timer);
+    time=30;
+
+    timer=setInterval(()=>{
+        timerEl.innerText="Time: "+time+"s";
+        time--;
+
+        if(time<0){
+            clearInterval(timer);
+            nextQuestion();
+        }
+    },1000);
+}
+
+// NEXT
+document.getElementById("nextBtn").onclick=()=>nextQuestion();
+
+function nextQuestion(){
+    if(current<questions.length-1){
+        loadQuestion(current+1);
+    } else {
+        submitQuiz();
+    }
+}
+
+// NAVIGATION
+function updateNav(){
+    qList.innerHTML="";
+
+    questions.forEach((q,i)=>{
+        let div=document.createElement("div");
+        div.className="q-nav";
+
+        if(i===current) div.classList.add("active");
+        if(answers[i]) div.classList.add("done");
+
+        div.innerText="Q"+(i+1);
+        div.onclick=()=>loadQuestion(i);
+
+        qList.appendChild(div);
+    });
+}
+
+// PROGRESS
+function updateProgress(){
+    let done=answers.filter(a=>a!==null).length;
+    let percent=Math.round((done/questions.length)*100);
+
+    percentEl.innerText=percent+"%";
+    circle.style.background=`conic-gradient(green ${percent}%, #ddd ${percent}%)`;
+}
+
+// SUBMIT
+document.getElementById("submitBtn").onclick=()=>submitQuiz();
+
+function submitQuiz(){
+    clearInterval(timer);
+
+    let score=0;
+    let html=`<h3>Result Card</h3>
+    <p><b>Name:</b> ${student.name}</p>
+    <p><b>Reg:</b> ${student.reg}</p><hr>`;
+
+    questions.forEach((q,i)=>{
+        let user=answers[i];
+        let correct=q.a;
+
+        let cls="unattempted";
+
+        if(user===correct){
+            cls="correct";
+            score++;
+        } else if(user){
+            cls="wrong";
+        }
+
+        html+=`
+        <div class="${cls} mb-2">
+            <b>Q${i+1}:</b> ${q.q}<br>
+            Your: ${user||"Not Attempted"}<br>
+            Correct: ${correct}
+        </div>`;
+    });
+
+    html+=`<hr><h4>Score: ${score}/${questions.length}</h4>
+    <button class="btn btn-danger" id="pdfBtn">Download PDF</button>`;
+
+    quizPage.style.display="none";
+    resultPage.style.display="block";
+    resultPage.innerHTML=html;
+
+    document.getElementById("pdfBtn").onclick=downloadPDF;
+}
+
+// PDF
+function downloadPDF(){
+    const { jsPDF } = window.jspdf;
+    let doc=new jsPDF();
+
+    let y=20;
+    doc.text("Quiz Result Card",20,y); y+=10;
+    doc.text("Name: "+student.name,20,y); y+=10;
+    doc.text("Reg: "+student.reg,20,y); y+=10;
+
+    let score=0;
+
+    questions.forEach((q,i)=>{
+        let user=answers[i]||"Not Attempted";
+        if(user===q.a) score++;
+
+        doc.text(`Q${i+1}: ${q.q}`,20,y); y+=8;
+        doc.text(`Your: ${user}`,20,y); y+=8;
+        doc.text(`Correct: ${q.a}`,20,y); y+=10;
+
+        if(y>270){ doc.addPage(); y=20; }
+    });
+
+    doc.text(`Final Score: ${score}/${questions.length}`,20,y);
+
+    doc.save("Full_Result.pdf");
+}
+
+// THEME
+document.getElementById("themeBtn").onclick=()=>{
+    document.body.classList.toggle("dark");
+};
+</script>
+
+</body>
+</html>
