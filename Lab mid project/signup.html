@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="card">
+      <div class="section-title">
+        <a href="index.html" class="brand has-logo" aria-label="Local Services home">
+          <img src="logo.webp" alt="Local Services logo" class="brand-mark">
+          <span>Local Services</span>
+        </a>
+        <a class="chip" href="login.html">Already have account?</a>
+      </div>
+      <h2 class="mt-1">Create Account</h2>
+      <p class="muted mb-2">Signup as customer or worker and start using the marketplace.</p>
+      <div id="authMessage" class="mb-1"></div>
+      <form id="signupForm" class="grid">
+        <div>
+          <label for="name">Full Name</label>
+          <input id="name" type="text" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input id="password" type="password" minlength="6" required>
+        </div>
+        <div>
+          <label for="role">Role</label>
+          <select id="role">
+            <option value="user">Customer</option>
+            <option value="worker">Worker</option>
+          </select>
+        </div>
+        <div id="workerFields" class="hidden grid">
+          <div>
+            <label for="workerCategory">Worker Category</label>
+            <select id="workerCategory">
+              <option value="Electrician">Electrician</option>
+              <option value="Plumber">Plumber</option>
+              <option value="Tutor">Tutor</option>
+              <option value="Cleaner">Cleaner</option>
+            </select>
+          </div>
+          <div>
+            <label for="workerExperience">Experience (years)</label>
+            <input id="workerExperience" type="number" min="0" value="1">
+          </div>
+          <div>
+            <label for="workerRate">Hourly Rate ($)</label>
+            <input id="workerRate" type="number" min="1" value="15">
+          </div>
+          <div>
+            <label for="workerAddress">Full Address</label>
+            <input id="workerAddress" type="text" placeholder="House, Street, Area, City">
+          </div>
+          <div>
+            <label for="workerBio">Short Bio</label>
+            <textarea id="workerBio" rows="3" placeholder="About your work"></textarea>
+          </div>
+        </div>
+        <button class="btn primary" type="submit">Signup</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/geocode.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

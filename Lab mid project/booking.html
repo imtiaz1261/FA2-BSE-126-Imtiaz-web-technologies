@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container nav">
+      <a href="index.html" class="brand has-logo" aria-label="Local Services home">
+        <img src="logo.webp" alt="Local Services logo" class="brand-mark">
+        <span>Local Services</span>
+      </a>
+      <nav class="nav-links">
+        <a class="chip" href="services.html">Services</a>
+        <a class="chip" href="chat.html">Chat</a>
+        <span id="authLinks">
+          <a class="chip" href="login.html">Login</a>
+          <a class="chip" href="signup.html">Signup</a>
+        </span>
+        <span id="userMenu" class="hidden">
+          <a id="dashboardLink" class="chip" href="dashboard-user.html">Dashboard</a>
+          <button id="logoutBtn" class="chip">Logout</button>
+          <span id="userName" class="chip"></span>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero page-hero">
+      <h1>Book a Service</h1>
+      <p id="serviceInfo" class="muted"></p>
+    </section>
+    <section class="row-2">
+      <article class="card">
+        <h3>Create Booking</h3>
+        <div id="bookingMessage" class="mb-1"></div>
+        <form id="bookingForm" class="grid">
+          <div>
+            <label for="date">Date</label>
+            <input id="date" type="date" required>
+          </div>
+          <div>
+            <label for="time">Time</label>
+            <input id="time" type="time" required>
+          </div>
+          <div>
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="4" placeholder="Optional instructions"></textarea>
+          </div>
+          <div>
+            <label for="customerAddress">Full Address</label>
+            <textarea id="customerAddress" rows="3" placeholder="House no, street, area, city" required></textarea>
+          </div>
+          <button type="submit" class="btn primary">Confirm Booking</button>
+        </form>
+      </article>
+      <article class="card">
+        <h3>My Recent Bookings</h3>
+        <div id="bookingList" class="list mt-1"></div>
+      </article>
+    </section>
+  </main>
+
+  <div id="rescheduleModalOverlay" class="hidden modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="section-title" style="margin-bottom: 0.25rem;">
+        <h3 class="m-0">Reschedule Booking</h3>
+        <button id="closeRescheduleBtn" type="button" class="btn" aria-label="Close">Close</button>
+      </div>
+      <p id="rescheduleModalHint" class="muted" style="margin-top: 0.25rem;"></p>
+      <div class="grid">
+        <div>
+          <label for="rescheduleDate">New Date</label>
+          <input id="rescheduleDate" type="date" required>
+        </div>
+        <div>
+          <label for="rescheduleTime">New Time</label>
+          <input id="rescheduleTime" type="time" required>
+        </div>
+      </div>
+      <div class="row-2 mt-1">
+        <button id="confirmRescheduleBtn" type="button" class="btn primary">Confirm</button>
+        <button id="cancelRescheduleBtn" type="button" class="btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/booking.js"></script>
+</body>
+</html>

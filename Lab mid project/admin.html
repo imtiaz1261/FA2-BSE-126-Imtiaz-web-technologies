@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Smart Local Services</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header class="app-header">
+    <div class="container nav">
+        <a href="index.html" class="brand has-logo" aria-label="Local Services home">
+            <img src="logo.webp" alt="Local Services logo" class="brand-mark">
+            <span>Local Services</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="chip">Home</a>
+            <a href="services.html" class="chip">Services</a>
+            <a href="dashboard-worker.html" class="chip">Worker Dashboard</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container admin-shell">
+    <section class="hero page-hero">
+        <h1>Admin Panel</h1>
+        <p class="muted">Add new services and manage existing ones from one place.</p>
+    </section>
+
+    <section class="admin-grid mt-2">
+        <article class="card">
+            <h3>Add New Service</h3>
+            <div id="adminMessage" class="mb-1"></div>
+            <form id="serviceForm" class="grid">
+                <div>
+                    <label for="name">Service Name</label>
+                    <input type="text" id="name" placeholder="e.g., AC Repair" required>
+                </div>
+                <div>
+                    <label for="desc">Description</label>
+                    <textarea id="desc" rows="3" placeholder="Short description" required></textarea>
+                </div>
+                <button type="submit" class="btn success">Add Service</button>
+            </form>
+        </article>
+
+        <article class="card">
+            <h3>Manage Services</h3>
+            <p class="muted">Delete outdated services instantly.</p>
+            <div id="adminServiceList" class="admin-service-list"></div>
+        </article>
+    </section>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>

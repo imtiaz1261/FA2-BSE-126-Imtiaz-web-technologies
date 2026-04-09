@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container nav">
+      <a href="index.html" class="brand has-logo" aria-label="Local Services home">
+        <img src="logo.webp" alt="Local Services logo" class="brand-mark">
+        <span>Local Services</span>
+      </a>
+      <nav class="nav-links">
+        <a class="chip" href="services.html">Services</a>
+        <a class="chip" href="booking.html">Booking</a>
+        <span id="authLinks">
+          <a class="chip" href="login.html">Login</a>
+          <a class="chip" href="signup.html">Signup</a>
+        </span>
+        <span id="userMenu" class="hidden">
+          <a id="dashboardLink" class="chip" href="dashboard-user.html">Dashboard</a>
+          <button id="logoutBtn" class="chip">Logout</button>
+          <span id="userName" class="chip"></span>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero page-hero">
+      <h1>Chat</h1>
+      <p class="muted">Conversation with <strong id="chatWith">...</strong></p>
+      <div id="chatMessage"></div>
+    </section>
+    <section class="card">
+      <div id="chatBox" class="chat-box"></div>
+      <form id="chatForm" class="row-2 mt-1">
+        <input id="messageInput" placeholder="Type your message" autocomplete="off">
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/chat.js"></script>
+</body>
+</html>

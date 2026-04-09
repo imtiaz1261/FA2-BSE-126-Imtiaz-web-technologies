@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="card">
+      <div class="section-title">
+        <a href="index.html" class="brand has-logo" aria-label="Local Services home">
+          <img src="logo.webp" alt="Local Services logo" class="brand-mark">
+          <span>Local Services</span>
+        </a>
+        <a class="chip" href="signup.html">Create Account</a>
+      </div>
+      <h2 class="mt-1">Welcome Back</h2>
+      <p class="muted mb-2">Login to manage bookings and marketplace activity.</p>
+      <div id="authMessage" class="mb-1"></div>
+      <form id="loginForm" class="grid">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input id="password" type="password" minlength="6" required>
+        </div>
+        <button class="btn primary" type="submit">Login</button>
+      </form>
+      <p class="muted mt-2">Demo: `user@demo.com` / `123456`</p>
+    </section>
+  </main>
+
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
